@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<!--
+        Preamble.exe prepends the specified string to the head of the specified file.
+        Copyright (C) 2023 Timothy J. Bruce
+	-->
+
+	<PropertyGroup>
+		<RootNamespace>Icod.Preamble</RootNamespace>
+		<AssemblyName>Preamble</AssemblyName>
+		<OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
