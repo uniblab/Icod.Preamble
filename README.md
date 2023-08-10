@@ -17,7 +17,7 @@ If --trim switch is specified, then input lines are trimmed of all surrounding w
 
 ## Copyright and Licensing
 Preamble.exe prepends the specified string to the head of the specified file.
-Copyright( C ) 2023 Timothy J. Bruce
+Copyright (C) 2023 Timothy J. Bruce
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published 
