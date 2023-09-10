@@ -63,7 +63,7 @@ namespace Icod.Preamble {
 				trimmer = x => x;
 			}
 
-			if ( !processor.TryGetValue( "preamble", trim, out var preamble ) ) {
+			if ( !processor.TryGetValue( "preamble", false, out var preamble ) ) {
 				PrintUsage();
 				return 1;
 			}
