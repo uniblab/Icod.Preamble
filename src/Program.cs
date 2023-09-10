@@ -26,7 +26,7 @@ namespace Icod.Preamble {
 		[System.STAThread]
 		public static System.Int32 Main( System.String[] args ) {
 			var len = args.Length;
-			if ( 6 < len ) {
+			if ( 7 < len ) {
 				PrintUsage();
 				return 1;
 			}
