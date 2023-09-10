@@ -8,7 +8,7 @@ Displays this text.
 `Preamble.exe --copyright`
 Displays copyright and licensing information.
 
-`Preamble.exe --preamble thePreamble [--input inputFilePathName] [--output outputFilePathName]`
+`Preamble.exe (-p | --preamble | /preamble) thePreamble [(-i | --input | /input) inputFilePathName] [(-o | --output | /output) outputFilePathName] [(-t | --trim | /trim)]`
 Preamble.exe prepends the specified string to the head of the specified file.
 inputFilePathName and outputFilePathName may be relative or absolute paths.
 If inputFilePathName is omitted then input is read from StdIn.

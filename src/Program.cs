@@ -63,7 +63,10 @@ namespace Icod.Preamble {
 				trimmer = x => x;
 			}
 
-			if ( !processor.TryGetValue( "preamble", false, out var preamble ) ) {
+			if (
+				( !processor.TryGetValue( "preamble", false, out var preamble ) )
+				|| System.String.IsNullOrEmpty( preamble )
+			) {
 				PrintUsage();
 				return 1;
 			}
@@ -94,7 +97,7 @@ namespace Icod.Preamble {
 
 			writer(
 				outputPathName,
-				preamble ?? System.String.Empty,
+				preamble!,
 				reader( inputPathName )
 			);
 			return 0;
@@ -109,7 +112,7 @@ namespace Icod.Preamble {
 			System.Console.Error.WriteLine( "inputFilePathName and outputFilePathName may be relative or absolute paths." );
 			System.Console.Error.WriteLine( "If inputFilePathName is omitted then input is read from StdIn." );
 			System.Console.Error.WriteLine( "If outputFilePathName is omitted then output is written to StdOut." );
-			System.Console.Error.WriteLine( "If --trim switch is specified, then input lines are trimmed of all surrounding whitespace and empty strings are ignored." );
+			System.Console.Error.WriteLine( "If --trim switch is specified, then input lines are trimmed of all surrounding whitespace and empty lines are ignored." );
 		}
 		private static void PrintCopyright() {
 			var copy = new System.String[] {
