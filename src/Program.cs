@@ -105,8 +105,8 @@ namespace Icod.Preamble {
 
 		private static void PrintUsage() {
 			System.Console.Error.WriteLine( "No, no, no! Use it like this, Einstein:" );
-			System.Console.Error.WriteLine( "Preamble.exe --help" );
-			System.Console.Error.WriteLine( "Preamble.exe --copyright" );
+			System.Console.Error.WriteLine( "Preamble.exe (-h | --help | /help)" );
+			System.Console.Error.WriteLine( "Preamble.exe (-c | --copyright | /copyright)" );
 			System.Console.Error.WriteLine( "Preamble.exe --preamble thePreamble [--input inputFilePathName] [--output outputFilePathName] [--trim]" );
 			System.Console.Error.WriteLine( "Preamble.exe prepends the specified string to the head of the specified file." );
 			System.Console.Error.WriteLine( "inputFilePathName and outputFilePathName may be relative or absolute paths." );

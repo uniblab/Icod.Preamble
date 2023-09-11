@@ -2,10 +2,10 @@
 Preamble.exe prepends the specified string to the head of the specified file.
 
 ## Usage
-`Preamble.exe --help`
+`Preamble.exe (-h | --help | /help)`
 Displays this text.
 
-`Preamble.exe --copyright`
+`Preamble.exe (-c | --copyright | /copyright)`
 Displays copyright and licensing information.
 
 `Preamble.exe (-p | --preamble | /preamble) thePreamble [(-i | --input | /input) inputFilePathName] [(-o | --output | /output) outputFilePathName] [(-t | --trim | /trim)]`
@@ -13,7 +13,7 @@ Preamble.exe prepends the specified string to the head of the specified file.
 inputFilePathName and outputFilePathName may be relative or absolute paths.
 If inputFilePathName is omitted then input is read from StdIn.
 If outputFilePathName is omitted then output is written to StdOut.
-If --trim switch is specified, then input lines are trimmed of all surrounding whitespace and empty strings are ignored.
+If trim switch is specified, then input lines are trimmed of all surrounding whitespace and empty strings are ignored.
 
 ## Copyright and Licensing
 Preamble.exe prepends the specified string to the head of the specified file.
