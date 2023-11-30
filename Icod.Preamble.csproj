@@ -13,6 +13,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Include="Icod.Argh" Version="1.1.0" />
+	  <PackageReference Include="Icod.Argh" Version="1.1.1" />
+	  <PackageReference Include="Icod.Helpers" Version="1.0.0" />
 	</ItemGroup>
 </Project>

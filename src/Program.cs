@@ -16,6 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+using Icod.Helpers;
+
 namespace Icod.Preamble {
 
 	public static class Program {
@@ -71,34 +73,42 @@ namespace Icod.Preamble {
 				return 1;
 			}
 
+			if ( processor.Contains( "help" ) ) {
+				PrintUsage();
+				return 1;
+			} else if ( processor.Contains( "copyright" ) ) {
+				PrintCopyright();
+				return 1;
+			}
+
 			System.Func<System.String?, System.Collections.Generic.IEnumerable<System.String>> reader;
 			if ( processor.TryGetValue( "input", true, out var inputPathName ) ) {
 				if ( System.String.IsNullOrEmpty( inputPathName ) ) {
 					PrintUsage();
 					return 1;
 				} else {
-					reader = a => ReadFile( a!, trimmer );
+					reader = a => a!.ReadLine();
 				}
 			} else {
-				reader = a => ReadStdIn( trimmer );
+				reader = a => System.Console.In.ReadLine( System.Environment.NewLine );
 			}
 
-			System.Action<System.String?, System.String, System.Collections.Generic.IEnumerable<System.String>> writer;
+			System.Action<System.String?, System.Collections.Generic.IEnumerable<System.String>> writer;
 			if ( processor.TryGetValue( "output", true, out var outputPathName ) ) {
 				if ( System.String.IsNullOrEmpty( outputPathName ) ) {
 					PrintUsage();
 					return 1;
 				} else {
-					writer = ( a, b, c ) => WriteFile( a!, b, c );
+					writer = ( a, b ) => a!.WriteLine( b );
 				}
 			} else {
-				writer = ( a, b, c ) => WriteStdOut( b, c );
+				writer = ( a, b ) => System.Console.Out.WriteLine( lineEnding: System.Environment.NewLine, data: b );
 			}
 
+			
 			writer(
 				outputPathName,
-				preamble!,
-				reader( inputPathName )
+				new System.String[ 1 ] { preamble! }.Union( reader( inputPathName ) )
 			);
 			return 0;
 		}
@@ -135,67 +145,6 @@ namespace Icod.Preamble {
 			foreach ( var line in copy ) {
 				System.Console.WriteLine( line );
 			}
-		}
-
-		#region io
-		private static System.Collections.Generic.IEnumerable<System.String> ReadStdIn( System.Func<System.String, System.String?> trimFunc ) {
-			var line = System.Console.In.ReadLine();
-			while ( null != line ) {
-				line = trimFunc( line );
-				if ( null != line ) {
-					yield return line;
-				}
-				line = System.Console.In.ReadLine();
-			}
-		}
-		private static System.Collections.Generic.IEnumerable<System.String> ReadFile( System.String filePathName, System.Func<System.String, System.String?> trimFunc ) {
-			using ( var file = System.IO.File.Open( filePathName, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read ) ) {
-				using ( var reader = new System.IO.StreamReader( file, System.Text.Encoding.UTF8, true, theBufferSize, true ) ) {
-					var line = reader.ReadLine();
-					while ( null != line ) {
-						line = trimFunc( line );
-						if ( null != line ) {
-							yield return line;
-						}
-						line = reader.ReadLine();
-					}
-				}
-			}
-		}
-
-		private static void WriteStdOut( System.String preamble, System.Collections.Generic.IEnumerable<System.String> data ) {
-			System.Console.Out.WriteLine( preamble );
-			foreach ( var datum in data ) {
-				System.Console.Out.WriteLine( datum );
-			}
-		}
-		private static void WriteFile( System.String filePathName, System.String preamble, System.Collections.Generic.IEnumerable<System.String> data ) {
-			using ( var file = System.IO.File.Open( filePathName, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Write, System.IO.FileShare.None ) ) {
-				_ = file.Seek( 0, System.IO.SeekOrigin.Begin );
-				using ( var writer = new System.IO.StreamWriter( file, System.Text.Encoding.UTF8, theBufferSize, true ) ) {
-					writer.WriteLine( preamble );
-					foreach ( var datum in data ) {
-						writer.WriteLine( datum );
-					}
-					writer.Flush();
-					writer.Close();
-				}
-				file.Flush();
-				file.SetLength( file.Position );
-				file.Close();
-			}
-		}
-		#endregion io
-
-		private static System.String? TrimToNull( this System.String? @string ) {
-			if ( System.String.IsNullOrEmpty( @string ) ) {
-				return null;
-			}
-			@string = @string.Trim();
-			return System.String.IsNullOrEmpty( @string )
-				? null
-				: @string
-			;
 		}
 
 	}
