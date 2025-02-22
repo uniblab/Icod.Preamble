@@ -1,5 +1,5 @@
 ﻿// Preamble.exe prepends the specified string to the head of the specified file.
-// Copyright (C) 2023 Timothy J. Bruce
+// Copyright (C) 2025 Timothy J. Bruce
 
 /*
     This program is free software: you can redistribute it and/or modify
@@ -127,7 +127,7 @@ namespace Icod.Preamble {
 		private static void PrintCopyright() {
 			var copy = new System.String[] {
 				"Preamble.exe prepends the specified string to the head of the specified file.",
-				"Copyright (C) 2023 Timothy J. Bruce",
+				"Copyright (C) 2025 Timothy J. Bruce",
 				"",
 				"This program is free software: you can redistribute it and / or modify",
 				"it under the terms of the GNU General Public License as published by",
