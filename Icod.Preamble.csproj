@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Preamble.exe prepends the specified string to the head of the specified file.
-    Copyright (C) 2023 Timothy J. Bruce
+    Copyright (C) 2025 Timothy J. Bruce
 -->
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
@@ -13,7 +13,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Include="Icod.Argh" Version="1.1.1" />
+	  <PackageReference Include="Icod.Argh" Version="1.1.2" />
 	  <PackageReference Include="Icod.Helpers" Version="1.0.0" />
 	</ItemGroup>
 </Project>
